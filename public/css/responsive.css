@@ -1,0 +1,8 @@
+@media only screen and (max-width: 660px) {
+    .desktop-navbar {
+        display: none;
+    }
+    .mobile-menu {
+        display: block;
+    }
+}
