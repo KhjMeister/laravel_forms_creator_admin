@@ -9,8 +9,8 @@
             </div>
             <div class="col-lg-5 mt-5 ">
                 <div class="card">
-                    <h4 class="text-contactus mt-3">راه های ارتباطی ما </h4>
-                    <h6 class="mt-3 textcard">آدرس : </h6>
+                    <h4 class="text-contactus mt-3">{{ __('message.connectionWays') }}</h4>
+                    <h6 class="mt-3 textcard">{{ __('message.address') }} </h6>
                     <div class="row mt-2 textcard">
                         <div class="col-sm-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -20,7 +20,7 @@
                             </svg>
                         </div>
                         <div class="col-sm-11">
-                            <p>زاهدان پارک علم و فناوری کارخانه نوآوری شرکت بهبود رایان</p>
+                           <p> {{ __('message.behboodAddress') }}</p>
                         </div>
                     </div>
                     <div class="row mt-2 textcard">
@@ -32,7 +32,7 @@
                             </svg>
                         </div>
                         <div class="col-sm-11">
-                            <p>تلفن تماس پشتیبانی : 09152743295</p>
+                            <p>  {{ __('message.backupPhone') }} : {{ __('message.companyPhone') }} </p>
                         </div>
                     </div>
                     <div class="row mt-2 textcard">
@@ -44,7 +44,7 @@
                             </svg>
                         </div>
                         <div class="col-sm-11">
-                            <p>آدرس ایمیل : rayanline@info.com</p>
+                            <p> {{ __('message.companyemail') }} : {{ __('message.behhbodemail') }}</p>
                         </div>
                     </div>
                     <iframe class=" map mt-2"

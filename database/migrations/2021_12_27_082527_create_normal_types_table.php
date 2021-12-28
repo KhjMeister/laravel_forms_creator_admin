@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionnairsTable extends Migration
+class CreateNormalTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateQuestionnairsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionnairs', function (Blueprint $table) {
+        Schema::create('normal_types', function (Blueprint $table) {
             $table->id();
-            $table->string('qname');
-            $table->integer('c_id');
-            $table->integer('u_id');
-            $table->integer('qstate')->default(0);
+            $table->string('htext');
+            $table->text('hbigtext');
+            $table->integer('n_id');
+            $table->integer('ntype');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateQuestionnairsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionnairs');
+        Schema::dropIfExists('normal_types');
     }
 }

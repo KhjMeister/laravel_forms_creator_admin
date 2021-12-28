@@ -17,4 +17,14 @@ class Category extends Model
         'active_state',
         'u_id'
     ];
+
+    public function questionnair()
+    {
+        return $this->hasMany(Questionnair::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

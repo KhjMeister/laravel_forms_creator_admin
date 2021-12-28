@@ -24,6 +24,17 @@ return [
     'image' => 'تصویر',
     'back' => 'برگشت',
     'edite' => 'ویرایش',
+    'questionnair' => 'پرسش نامه',
+    'home' => 'خانه',
+    'contactUs' => 'تماس با ما',
+    'aboutUs' => 'درباره ما',
+    'connectionWays' => 'راه های ارتباطی ما ',
+    'address' => 'آدرس :',
+    'behboodAddress' => 'زاهدان پارک علم و فناوری کارخانه نوآوری شرکت بهبود رایان',
+    'companyPhone' => '09152743295',
+    'backupPhone' => 'تلفن تماس پشتیبانی',
+    'behhbodemail' => 'rayanline@info.com',
+    'companyemail' => 'ایمیل شرکت',
 
 
 

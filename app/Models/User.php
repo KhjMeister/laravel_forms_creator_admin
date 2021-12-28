@@ -29,6 +29,15 @@ class User extends Authenticatable
         'social_type'
     ];
 
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function questionnair()
+    {
+        return $this->hasMany(Questionnair::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -18,7 +18,11 @@
                         </div>
                     @endif
 
-                    {{ __('message.appName') }}
+                    <a class="btn btn-secondary" href="{{ route('questionnair.index') }}"> پرسش نامه</a>
+                    <br>
+                    <br>
+                    <a class="btn btn-secondary" href="{{ route('categories.index') }}">دسته بندی</a>
+                   
                 </div>
             </div>
         </div>

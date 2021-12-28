@@ -24,7 +24,17 @@ return [
     'image' => 'Image',
     'back' => 'Back',
     'edite' => 'Edit',
+    'questionnair' => 'Make QuestionNair',
+    'home' => 'Home',
+    'contactUs' => 'Contact Us',
+    'aboutUs' => 'About Us',
+    'connectionWays' => 'Connect Us ',
+    'address' => 'Address :',
+    'behboodAddress' => 'Iran , Zahedan , Sience Factory , Behbood Rayan Company',
+    'backupPhone' => 'Company Phone ',
+    'companyPhone' => '09152743295',
+    'behhbodemail' => 'rayanline@info.com',
+    'companyemail' => 'Company Email',
     
-  
 
 ];

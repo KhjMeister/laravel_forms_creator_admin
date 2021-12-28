@@ -43,7 +43,7 @@
                         @else
                             <li class=" dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <i class="fa fa-users"></i>
                                 </a>
                             
 
@@ -53,6 +53,9 @@
                                         {{ __('message.category') }}
                                     </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ route('questionnair.index') }}">
+                                        {{ __('message.questionnair') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -71,9 +74,9 @@
                                 <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
                             </select>
                         </li>
-                        <li><a href="#">درباره ما</a></li>
-                        <li><a href="{{ route('cuntactus') }}">تماس با ما</a></li>
-                        <li><a href="/">خانه</a></li>
+                        <li><a href="#"> {{ __('message.aboutUs') }}</a></li>
+                        <li><a href="{{ route('cuntactus') }}"> {{ __('message.contactUs') }} </a></li>
+                        <li><a href="/">{{ __('message.home') }}</a></li>
                     </ul>
                 </div>
                 
@@ -96,9 +99,9 @@
                 </div>
                 <hr>
                 <ul>        
-                        <li><a href="/">خانه</a></li>  
-                        <li><a href="{{ route('cuntactus') }}">تماس با ما</a></li>
-                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="/">{{ __('message.home') }}</a></li>  
+                        <li><a href="{{ route('cuntactus') }}">{{ __('message.contactUs') }}</a></li>
+                        <li><a href="#">{{ __('message.aboutUs') }}</a></li>
                         @guest
                             @if (Route::has('login'))
                                 <li >
@@ -114,7 +117,7 @@
                         @else
                             <li class=" dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <i class="fa fa-users"></i>
                                 </a>
                             
 

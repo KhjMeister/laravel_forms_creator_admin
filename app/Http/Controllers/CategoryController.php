@@ -29,16 +29,11 @@ class CategoryController extends Controller
             'name' => ['required', 'string', 'max:255'],
             // 'img_url' => ['required','image']
         ]);
-
         if($image = $request->hasfile('img_url')){
-          
             $filename  = $request->file('img_url')->getClientOriginalName();
-            
-            $path = $request->file('img_url')->move(public_path().'/uploads/',$filename);
-            
+            $path = $request->file('img_url')->move(public_path().'/uploads/',$filename);      
         }
-        
- 
+
          DB::table('categories')->insert([
              'name' => $category['name'],
             'img_url' =>$filename,
@@ -89,6 +84,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         File::delete('uploads/'.$category->img_url);
         Category::destroy($id);
-        return redirect()->back()->with('success', 'Your category has been successfully deleted');;
+        return redirect()->back()->with('success', 'دسته  حذف شد');;
     }
 }
