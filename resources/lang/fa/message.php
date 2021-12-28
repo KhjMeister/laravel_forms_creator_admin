@@ -23,6 +23,7 @@ return [
     'delete'=>'حذف',
     'image' => 'تصویر',
     'back' => 'برگشت',
+    'send' => 'ارسال',
     'edite' => 'ویرایش',
     'questionnair' => 'پرسش نامه',
     'home' => 'خانه',
@@ -35,7 +36,13 @@ return [
     'backupPhone' => 'تلفن تماس پشتیبانی',
     'behhbodemail' => 'rayanline@info.com',
     'companyemail' => 'ایمیل شرکت',
-
-
+    'nameAndFamily' => 'نام و نام خانوادگی',
+    'message' => 'متن پیام ',
+    'askForMessage' => 'متن مورد نظر خود را وارد کنید',
+    'readyQuestionNair' => 'پرسش نامه های آماده',
+    'yourQuestionNair' => 'پرسش نامه های شما',
+    'makeQuestionNair' => 'ایجاد پرسش نامه ',
+    'questionNairName' => 'نامی برای پرسش نامه خود انتخاب کنید ',
+    
 
 ];

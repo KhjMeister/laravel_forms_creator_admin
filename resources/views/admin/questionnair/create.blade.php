@@ -7,7 +7,7 @@
     
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"> ایجاد پرسش نامه<div><a class="btn btn-secondary" href="{{ route('questionnair.index') }}">برگشت</a></div> </div>
+                <div class="card-header">  اضافه کردن سوال به پرسش نامه <div><a class="btn btn-secondary" href="{{ route('questionnair.index') }}">برگشت</a></div> </div>
                 <div class="card-body">
                     <div class="row ">
                         <div class="col-6">

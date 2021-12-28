@@ -12,7 +12,7 @@
           </div>
           <div class="col-lg-5 ">
             <div class="card shadow">
-              <img class="img-fluid  img-register1 align-self-center" src="{{ asset('images/profile.png')}}">
+              <img class="img-fluid move-2 img-register1 align-self-center" src="{{ asset('images/profile.png')}}">
               <h5 class="font-left-register align-self-center m-3">شما می توانید با اکانت <span class="tex1"> گوگل</span> وارد شوید</h2>
                 
                 <div class="col-sm-10 m-auto  text-center">
@@ -81,7 +81,7 @@
                 <br>
                 Line
               </h1>
-              <img src="{{ asset('images/welcome-bg3.jpg')}}" class="mt-3 image-register2 align-self-center">
+              <img src="{{ asset('images/welcome-bg3.jpg')}}" class="move-1 mt-3 image-register2 align-self-center">
             </div>
           </div>
         </div>

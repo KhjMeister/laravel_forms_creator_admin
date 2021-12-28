@@ -14,10 +14,17 @@ class QuestionnairController extends Controller
     {
         $this->middleware('auth');
     }
+    public function getCurrentUserId()
+    {
+        return Auth::id();
+    }
 
     public function index()
     {
-        return view('admin.questionnair.index');
+        $questionnair = Questionnair::get()->where(
+            'u_id' , $this->getCurrentUserId(),
+        );
+        return view('admin.questionnair.index',compact('questionnair'));
     }
 
     public function create()
@@ -31,13 +38,42 @@ class QuestionnairController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
        
-         DB::table('questionnairs')->insert([
+        DB::table('questionnairs')->insert([
             'qname' => $questionnair['name'],
-            'u_id' => Auth::id(),
+            'u_id' => $this->getCurrentUserId(),
             'c_id' => 1 ,
             'qstate' => 0
-            
         ]);
-        return redirect('create');
+
+        return redirect()->back();
+    }
+    public function show($id)
+    {
+        $questionnair = Questionnair::find($id);
+        return view('admin.questionnair.single',compact('questionnair'));
+    }
+    public function edit($id)
+    {
+        $questionnair = Questionnair::find($id);
+        return view('admin.questionnair.edite',compact('questionnair'));
+    }
+    public function destroy($id)
+    {
+        // $questionnair = Questionnair::find($id);
+        
+        Questionnair::destroy($id);
+        return redirect()->back()->with('success', 'پرسشنامه  حذف شد');;
+    }
+    public function update($id, Request $request)
+    {
+        $quest = $request->validate([
+            'qname' => ['required', 'string', 'max:255'],
+        ]);
+            // $questionnair = Questionnair::find($id);
+            DB::table('questionnairs')->where('id',$id)->update([
+                'qname' => $quest['qname'],     
+           ]);
+ 
+        return redirect('questionnair');
     }
 }

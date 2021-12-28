@@ -56,21 +56,21 @@
                 <div class="card">
 
                     <div class="col-sm-9 m-auto mt-3">
-                        <label>نام و نام خانوادگی:</label>
+                        <label>{{ __('message.nameAndFamily') }}:</label>
                         <input type="text" class="form-control text-muted mt-2 text-center" id="name" name="text">
                     </div>
                     <div class="col-sm-9 m-auto">
-                        <label class="mt-1">ایمیل:</label>
+                        <label class="mt-1">{{ __('message.emailLabel') }}:</label>
                         <input type="email" class="form-control mt-2 text-center" id="email"
                             placeholder="example@gmail.com" name="email">
                     </div>
                     <div class="col-sm-9 m-auto">
-                        <label class="mt-1">متن پیام:</label>
+                        <label class="mt-1">{{ __('message.message') }} :</label>
                         <textarea class="form-control mt-2  text-muted"
-                            aria-label="With textarea">متن مورد نظر خود را وارد کنید</textarea>
+                            aria-label="With textarea"> {{ __('message.askForMessage') }}</textarea>
                     </div>
                     <div class="col-sm-9 m-auto my-3 mb-4 ">
-                        <button type="submit" class="btn btn-default px-5 header1">ارسال</button>
+                        <button type="submit" class="btn btn-default px-5 header1">{{ __('message.send') }}</button>
                       </div>
                 </div>
 

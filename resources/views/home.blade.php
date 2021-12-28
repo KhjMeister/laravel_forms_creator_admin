@@ -4,10 +4,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-4">
     
-    </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -18,10 +16,10 @@
                         </div>
                     @endif
 
-                    <a class="btn btn-secondary" href="{{ route('questionnair.index') }}"> پرسش نامه</a>
+                    <a class="btn btn-secondary" href="{{ route('questionnair.index') }}">{{ __('message.questionnair') }}</a>
                     <br>
                     <br>
-                    <a class="btn btn-secondary" href="{{ route('categories.index') }}">دسته بندی</a>
+                    <a class="btn btn-secondary" href="{{ route('categories.index') }}">{{ __('message.category') }}</a>
                    
                 </div>
             </div>

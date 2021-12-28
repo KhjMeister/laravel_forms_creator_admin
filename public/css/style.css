@@ -183,3 +183,79 @@
        margin-right:3rem;
 }
 }
+/****************************** animation ******************************************* */
+.move-1 {
+    -webkit-animation: move1 5s infinite;
+    animation: move1 5s infinite;
+}
+.move-2 {
+    -webkit-animation: move2 5s infinite;
+    animation: move2 5s infinite;
+}
+
+@-webkit-keyframes move1 {
+    0% {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+
+    50% {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+
+    to {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+}
+
+@keyframes move1 {
+    0% {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+
+    50% {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+
+    to {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+}
+@-webkit-keyframes move2 {
+    0% {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+
+    50% {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+
+    to {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+}
+
+@keyframes move2 {
+    0% {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+
+    50% {
+        -webkit-transform: rotate(-1deg) translate(-2px, -2px);
+        transform: rotate(-1deg) translate(-2px, -2px)
+    }
+
+    to {
+        -webkit-transform: rotate(1deg) translate(2px, 2px);
+        transform: rotate(1deg) translate(2px, 2px)
+    }
+}

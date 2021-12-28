@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+ 
 </head>
 <body>
     <div id="app">   
@@ -24,7 +25,7 @@
             <nav dir="ltr">
                
                 <div class="desktop-navbar">
-                    <div class="logo">
+                    <div class="logo ">
                         <h3>rayan <span class="myspan">line</span></h3>
                     </div>
                     <ul>          
@@ -82,7 +83,7 @@
                 
                 <div class="container mt-5 mobile-menu">
                     <div class="mobile-navbar">
-                        <div class="logo">
+                        <div class="logo move-1" >
                             <h3>rayan <span>line</span></h3>
                         </div>
                         <div id="humberger-menu">

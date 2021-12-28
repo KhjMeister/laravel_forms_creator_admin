@@ -4,10 +4,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-4">
     
-    </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header" style="display:flex;justify-content:space-between;">
                    <div>

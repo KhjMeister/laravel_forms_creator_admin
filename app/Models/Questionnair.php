@@ -17,10 +17,10 @@ class Questionnair extends Model
     //     return $this->belongsTo(User::class,'u_id');
     // }
 
-    // public function question()
-    // {
-    //     return $this->hasMany(Question::class);
-    // }
+    public function question()
+    {
+        return $this->hasMany(Question::class,'q_id');
+    }
 
     // public function category()
     // {

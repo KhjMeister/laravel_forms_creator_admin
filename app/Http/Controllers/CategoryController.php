@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
     public function update($id, Request $request)
     {
-        $category = $request->validate([
+        $categ = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'old_img_url' => ['required']
         ]);
@@ -64,14 +64,14 @@ class CategoryController extends Controller
             File::delete('uploads/'.$category->img_url);
             $filename  = $request->file('img_url')->getClientOriginalName();
             $path = $request->file('img_url')->move(public_path().'/uploads/',$filename);
-            DB::table('categories')->update([
-                'name' => $category['name'],
+            DB::table('categories')->where('id',$id)->update([
+                'name' => $categ['name'],
                'img_url' =>$filename,
            ]);
         } else {
-            DB::table('categories')->update([
-                'name' => $category['name'],
-               'img_url' =>$category['old_img_url']
+            DB::table('categories')->where('id',$id)->update([
+                'name' => $categ['name'],
+               'img_url' =>$categ['old_img_url']
            ]);
         }
         

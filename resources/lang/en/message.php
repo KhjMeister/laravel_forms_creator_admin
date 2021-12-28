@@ -23,8 +23,9 @@ return [
     'delete' => 'Delete',
     'image' => 'Image',
     'back' => 'Back',
+    'send' => 'Send',
     'edite' => 'Edit',
-    'questionnair' => 'Make QuestionNair',
+    'questionnair' => 'QuestionNair',
     'home' => 'Home',
     'contactUs' => 'Contact Us',
     'aboutUs' => 'About Us',
@@ -35,6 +36,13 @@ return [
     'companyPhone' => '09152743295',
     'behhbodemail' => 'rayanline@info.com',
     'companyemail' => 'Company Email',
+    'nameAndFamily' => 'First And Last Name',
+    'message' => 'Message ',
+    'askForMessage' => 'Pls Enter Your Message',
+    'readyQuestionNair' => 'Ready QuestionNair',
+    'yourQuestionNair' => 'your question nair',
+    'makeQuestionNair' => 'Make QuestionNair',
+    'questionNairName' => 'Choose a name for questionnair',
     
 
 ];
