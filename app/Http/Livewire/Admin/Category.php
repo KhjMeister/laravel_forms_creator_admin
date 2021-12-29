@@ -56,6 +56,7 @@ class Category extends Component
     {
         $validatedDate = $this->validate([
             'name' => ['required', 'string', 'max:255'], 
+            'img_url' => 'image|max:2048',
         ]);
         $filename = $this->img_url->store('uploads','public');
         Cat::insert([

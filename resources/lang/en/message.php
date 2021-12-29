@@ -20,7 +20,7 @@ return [
     'image' => 'Image ',
     'confirm' => 'Confirm',
     'show' => 'Show',
-    'msg' => 'Delete',
+    'delete' => 'Delete',
     'image' => 'Image',
     'back' => 'Back',
     'send' => 'Send',
