@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
- 
+    @livewireStyles
 </head>
 <body>
     <div id="app">   
@@ -159,7 +159,7 @@
        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
        <script src="{{ asset('js/aos.js') }}"></script>
        <script src="{{ asset('js/all.min.js') }}"></script>
-      
+       @livewireScripts
            
       
        <script type="text/javascript">

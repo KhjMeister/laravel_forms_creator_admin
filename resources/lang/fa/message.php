@@ -43,6 +43,9 @@ return [
     'yourQuestionNair' => 'پرسش نامه های شما',
     'makeQuestionNair' => 'ایجاد پرسش نامه ',
     'questionNairName' => 'نامی برای پرسش نامه خود انتخاب کنید ',
-    
+    'Cancel' => 'برگشت',
+    'deleteMSG' => 'دسته بندی حذف شد',
+    'updateMSG' => 'دسته بندی آپدیت شد',
+    'createMSG' => 'دسته بندی ایجاد شد',
 
 ];

@@ -20,7 +20,7 @@ return [
     'image' => 'Image ',
     'confirm' => 'Confirm',
     'show' => 'Show',
-    'delete' => 'Delete',
+    'msg' => 'Delete',
     'image' => 'Image',
     'back' => 'Back',
     'send' => 'Send',
@@ -43,6 +43,10 @@ return [
     'yourQuestionNair' => 'your question nair',
     'makeQuestionNair' => 'Make QuestionNair',
     'questionNairName' => 'Choose a name for questionnair',
+    'Cancel' => 'Cancel',
+    'deleteMSG' => 'Category Deleted Successfully',
+    'updateMSG' => 'Category Updated Successfully',
+    'createMSG' => 'Category Created Successfully',
     
 
 ];
