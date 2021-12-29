@@ -44,9 +44,11 @@ return [
     'makeQuestionNair' => 'Make QuestionNair',
     'questionNairName' => 'Choose a name for questionnair',
     'Cancel' => 'Cancel',
-    'deleteMSG' => 'Category Deleted Successfully',
-    'updateMSG' => 'Category Updated Successfully',
-    'createMSG' => 'Category Created Successfully',
+    'deleteMSG' => 'Subject Deleted Successfully',
+    'updateMSG' => 'Subject Updated Successfully',
+    'createMSG' => 'Subject Created Successfully',
+    'status' => 'Status',
+    
     
 
 ];

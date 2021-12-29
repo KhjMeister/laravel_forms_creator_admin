@@ -69,12 +69,14 @@ class Category extends Component
         session()->flash('message', 'create');
         $this->canceladd();
     }
+
     public function delete($id)
     {
         File::delete(public_path('storage/').$this->getOneCategory($id)->img_url);
         Cat::find($id)->delete();
         session()->flash('message', 'delete');
     }
+    
     public function update()
 
     {
