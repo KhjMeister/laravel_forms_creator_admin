@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,15 +14,16 @@
     <link rel="stylesheet" href="{{ asset('Admin/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Admin/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('Admin/images/favicon.png') }}" />
-    
+    @livewireStyles
 </head>
-<body dir="rtl">
+<body class="rtl">
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo mr-5" href="/"><img src="Admin/images/logo.svg" class="mr-2" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="/"><img src="Admin/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -31,92 +32,111 @@
             <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
                 <div class="input-group">
+                
+                <input type="text" class="form-control " id="navbar-search-input" placeholder="{{ __('Search') }}" aria-label="search" aria-describedby="search">
                 <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                     <span class="input-group-text" id="search">
-                    <i class="icon-search"></i>
+                        <i class="icon-search"></i>
                     </span>
                 </div>
-                <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-                </div>
+              </div>
             </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="icon-bell mx-0"></i>
-                <span class="count"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                        <i class="ti-info-alt mx-0"></i>
-                    </div>
-                    </div>
-                    <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                        Just now
-                    </p>
-                    </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                    <div class="preview-icon bg-warning">
-                        <i class="ti-settings mx-0"></i>
-                    </div>
-                    </div>
-                    <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                        Private message
-                    </p>
-                    </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                        <i class="ti-user mx-0"></i>
-                    </div>
-                    </div>
-                    <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                        2 days ago
-                    </p>
-                    </div>
-                </a>
-                </div>
-            </li>
-            <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="images/faces/face28.jpg" alt="profile"/>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item">
-                    <i class="ti-settings text-primary"></i>
-                    Settings
-                </a>
-                <a class="dropdown-item">
-                    <i class="ti-power-off text-primary"></i>
-                    Logout
-                </a>
-                </div>
-            </li>
-            <li class="nav-item nav-settings d-none d-lg-flex">
-                <a class="nav-link" href="#">
-                <i class="icon-ellipsis"></i>
-                </a>
-            </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="icon-bell mx-0"></i>
+                  <span class="count"></span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                  <p class="mb-0 font-weight-normal float-left dropdown-header">{{ __('message.notifications') }}</p>
+                  <a class="dropdown-item preview-item">
+                      <div class="preview-thumbnail">
+                      <div class="preview-icon bg-success">
+                          <i class="ti-info-alt mx-0"></i>
+                      </div>
+                      </div>
+                      <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-normal">{{__('message.news')}}</h6>
+                      <p class="font-weight-light small-text mb-0 text-muted">
+                      {{__('message.justNow')}}
+                      </p>
+                      </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                      <div class="preview-thumbnail">
+                      <div class="preview-icon bg-warning">
+                          <i class="ti-settings mx-0"></i>
+                      </div>
+                      </div>
+                      <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-normal">{{__('message.messagees')}}</h6>
+                      <p class="font-weight-light small-text mb-0 text-muted">
+                      {{__('message.privateMSG')}}
+                      </p>
+                      </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                      <div class="preview-thumbnail">
+                      <div class="preview-icon bg-info">
+                          <i class="ti-user mx-0"></i>
+                      </div>
+                      </div>
+                      <div class="preview-item-content">
+                      <h6 class="preview-subject font-weight-normal">{{__('message.userRigestered')}}</h6>
+                      <p class="font-weight-light small-text mb-0 text-muted">
+                      {{__('message.daysAgo')}}
+                      </p>
+                      </div>
+                  </a>
+                  </div>
+              </li>
+              <li class="nav-item nav-profile dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                  <img src="Admin/images/faces/face28.jpg" alt="profile"/>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                  @if ( Auth::user()->role === 'admin' )
+                    <a class="dropdown-item" href="{{ route('categories.index') }}">
+                        <i class="icon-grid-2 menu-icon text-primary"></i>  
+                        
+                        {{ __('message.category') }}
+                    </a>
+                    
+                  @endif
+                  
+                    <a class="dropdown-item" href="{{ route('questionnair.index') }}">
+                        <i class="icon-paper menu-icon text-primary"></i>  
+                        {{ __('message.questionnair') }}
+                    </a>
+                    <a class="dropdown-item">
+                      <i class="ti-settings text-primary"></i>
+                      {{ __('message.settings') }}
+                  </a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        <i class="ti-power-off text-primary"></i>
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                  
+                  
+                  
+                  </div>
+              </li>
+              
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="icon-menu"></span>
+                <span class="icon-menu"></span>
             </button>
         </div>
         </nav>
         <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
+      
       <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
@@ -230,7 +250,7 @@
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -238,7 +258,7 @@
                 <small class="text-muted my-auto">19 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <div class="wrapper d-flex">
                     <p>Catherine</p>
@@ -249,7 +269,7 @@
                 <small class="text-muted my-auto">23 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Daniel Russell</p>
                   <p>Available</p>
@@ -257,7 +277,7 @@
                 <small class="text-muted my-auto">14 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <p>James Richardson</p>
                   <p>Away</p>
@@ -265,7 +285,7 @@
                 <small class="text-muted my-auto">2 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Madeline Kennedy</p>
                   <p>Available</p>
@@ -273,7 +293,7 @@
                 <small class="text-muted my-auto">5 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="Admin/images/faces/face28.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Sarah Graves</p>
                   <p>Available</p>
@@ -285,31 +305,43 @@
           <!-- chat tab ends -->
         </div>
       </div>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
+      <!-- sidebar  -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/home">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">داشبرد</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="{{route('questionnair.index')}}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">{{__('message.questionnair')}}</span>
+            </a>
+          </li>
+          @if ( Auth::user()->role === 'admin' )
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('categories.index')}}">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">کاربران</span>
+              <span class="menu-title">{{__('message.category')}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">مدیریت کاربران</span>
               <i class="menu-arrow"></i>
             </a>
-            <div  class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item" style="text-decoration: none;"> <a class="nav-link" style="margin-right: 18px;" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu" >
+                <li class="nav-item"> <a class="nav-link" href="#"> کاربران  </a></li>
+                <li class="nav-item"> <a class="nav-link" href="#"> ایجاد دسترسی </a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          @endif
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Form elements</span>
@@ -357,19 +389,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
               <i class="icon-ban menu-icon"></i>
@@ -388,7 +408,7 @@
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
         <div class="main-panel">
@@ -396,7 +416,7 @@
                 <div class="row">
                     <div class="col-md-12 grid-margin">
                         <div class="row">
-                            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                            <div class="col-12 col-xl-12 mb-4 mb-xl-0">
                                 @yield('content')
                             </div>
                         </div>
@@ -410,13 +430,14 @@
         <script src="{{ asset('Admin/js/vendor.bundle.base.js') }}"></script>
         <script src="{{ asset('Admin/js/template.js') }}"></script>
         <script src="{{ asset('Admin/js/dashboard.js') }}"></script>
+        @livewireScripts
 
-        <!-- <script type="text/javascript">
+        <script type="text/javascript">
             var url = "{{ route('changeLang') }}";
             $(".changeLang").change(function(){
                 window.location.href = url + "?lang="+ $(this).val();
             });
-        </script> -->
+        </script>
     </div>
 </body>
 </html>

@@ -48,5 +48,18 @@ return [
     'updateMSG' => 'مورد آپدیت شد',
     'createMSG' => 'مورد ایجاد شد',
     'status' => 'وضعیت',
+    'settings' => 'تنظیمات',
+    'active' => 'فعال',
+    'deactive' => 'غیرفعال',
+    'wellcome' => 'خوش آمدی ',
+    'ChLang' => 'زبانتان را انتخاب کنید',
+    'notifications' => 'نوتیفیکیشن',
+    'news' => 'اخبار',
+    'justNow' => 'همین الان',
+    'messagees' => 'پیام ها',
+    'privateMSG' => 'پیام شخصی',
+    'userRigestered' => 'کاربر ثبت نام کرد',
+    'daysAgo' => 'یک روز قبل',
+
 
 ];

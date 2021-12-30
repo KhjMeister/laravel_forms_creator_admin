@@ -48,6 +48,20 @@ return [
     'updateMSG' => 'Subject Updated Successfully',
     'createMSG' => 'Subject Created Successfully',
     'status' => 'Status',
+    'settings' => 'Settings',
+    'active' => 'Active',
+    'deactive' => 'Dactive',
+    'wellcome' => 'Wellcome',
+    'ChLang' => 'Choose Your Language',
+    'notifications' => 'Notifications',
+
+    'news' => 'News',
+    'justNow' => 'Just Now',
+    'messagees' => 'Messages',
+    'privateMSG' => 'Privaite Messages',
+    'userRigestered' => 'User Regestered',
+    'daysAgo' => 'Day Ago',
+    
     
     
 

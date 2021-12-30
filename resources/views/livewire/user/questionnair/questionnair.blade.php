@@ -82,10 +82,13 @@
                                             <button wire:click="editQNair({{ $qnair->id }})" class="btn btn-primary btn-sm">{{__('message.edite')}}</button>
                                             
                                         </td>
-                                        <td>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" wire:click="changeQState({{ $qnair->id }},{{ $qnair->qstate }})" type="checkbox" id="status" {{ $qnair->qstate ? 'checked' : '' }} />
-                                            </div>
+                                        <td class="form-check">
+                                        
+                                            
+                                                <label class=" form-check-label">
+                                                    <input class="form-check-input" wire:click="changeQState({{ $qnair->id }},{{ $qnair->qstate }})" type="checkbox" id="status" {{ $qnair->qstate ? 'checked' : '' }} />
+                                                </label>
+                                            
                                         </td>
                                     </tr>
                                     @endforeach
