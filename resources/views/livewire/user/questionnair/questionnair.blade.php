@@ -1,58 +1,62 @@
 <div>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            @if (session()->has('message') && session('message')==='deleteQNair')
-                    <div class="alert alert-success" aria="Close">
-                        <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
-                        {{ __('message.deleteMSG') }}
-                    </div>
-                @elseif(session()->has('message') && session('message')==='updateQNair')
-                    <div class="alert alert-success">
-                    <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
-                        {{ __('message.updateMSG') }}
-                    </div>
-                @elseif(session()->has('message') && session('message')==='createQNair')
-                    <div class="alert alert-success">
-                    <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
-                        {{ __('message.createMSG') }}
-                    </div>
-                @endif
-            <div class="card">
-                <div class="card-header" style="display:flex;justify-content:space-between;">
-                    <div>{{ __('message.questionnair') }}</div>
-                
-                    <div class="col-6">
-                        <a class="btn btn-secondary" href="{{ route('home') }}">
-                        {{__('message.back')}}
-                        </a>
-                        &nbsp;&nbsp;&nbsp;
-                        <a class="btn btn-success" href="#">
-                                {{__('message.readyQuestionNair')}}
-                        </a>
-                    </div>
+    @if (session()->has('message') && session('message')==='deleteQNair')
+        <div class="alert alert-success" aria="Close">
+            <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ __('message.deleteMSG') }}
+        </div>
+    @elseif(session()->has('message') && session('message')==='updateQNair')
+        <div class="alert alert-success">
+        <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ __('message.updateMSG') }}
+        </div>
+    @elseif(session()->has('message') && session('message')==='createQNair')
+        <div class="alert alert-success">
+        <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ __('message.createMSG') }}
+        </div>
+    @endif
+    <div class="row">
+        <div class="col-12 col-xl-10 mb-4 mb-xl-0">
+            <div class="row">
+                <div class="col-12 col-xl-4">
+                <a class="btn btn-inverse-primary " href="#">
+                    {{__('message.readyQuestionNair')}}
+                </a>
                 </div>
+               
+                <form class=" form-group col-12 col-xl-8" >          
+                    <div class="row">
+                        <input wire:model="name"  type="text" class="form-control col-xl-8 @error('name') is-invalid @enderror" placeholder="{{__('message.questionNairName')}}">
+                            @error('name') <span class="text-danger">{{ $message }}</span>@enderror
+                        <button  class="btn btn-inverse-success col-4" wire:click.prevent="storeQNair()">
+                            {{__('message.makeQuestionNair')}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-xl-2">
+            <div class="justify-content-end d-flex">
+                <a class="btn btn-inverse-secondary" href="{{ route('home') }}">
+                    {{__('message.back')}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    
+       
+       
+<div class="card">
+    <div class="card-body">
+        <p class="card-title mb-0">{{__('message.questionnair')}}</p>
+        <div class="col-md-12">
+            
+            <div >
                 <div class="card-body">
                     <div class="row align-center">
-                        <div class="col-6">
-                        @if($updateQN)
-                                <div>
-                                </div>
-                            @else
-                            <form class="row form-group" >
-                                
-                                <div class="row col-6">
-                                    <input wire:model="name"  type="text" class="form-control col-6 @error('name') is-invalid @enderror" placeholder="{{__('message.questionNairName')}}">
-                                    @error('name') <span class="text-danger">{{ $message }}</span>@enderror
-                                    <button  class="btn btn-success " wire:click.prevent="storeQNair()">
-                                    {{__('message.makeQuestionNair')}}
-                                    </button>
-
-                                </div>
-                            </form>
-                            @endif
-                        </div>
-                        <div class="col-6">
+                        
+                        <div class="col-12">
                             <h6>{{ __('message.yourQuestionNair') }}</h6>
                             @if($updateQN)
                                 @include('livewire.user.questionnair.update')
@@ -77,18 +81,18 @@
                                         </td>
                                         
                                         <td>
-                                            <button wire:click="deleteQNair({{ $qnair->id }})" class="btn btn-danger btn-sm">{{__('message.delete')}}</button>
-                                            <button  class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#showModal">{{__('message.show')}}</button>
-                                            <button wire:click="editQNair({{ $qnair->id }})" class="btn btn-primary btn-sm">{{__('message.edite')}}</button>
+                                            <button wire:click="deleteQNair({{ $qnair->id }})" class="btn btn-inverse-danger btn-sm">{{__('message.delete')}}</button>
+                                            <button  class="btn btn-inverse-info btn-sm" data-bs-toggle="modal" data-bs-target="#showModal">{{__('message.show')}}</button>
+                                            <button wire:click="editQNair({{ $qnair->id }})" class="btn btn-inverse-primary btn-sm">{{__('message.edite')}}</button>
                                             
                                         </td>
-                                        <td class="form-check">
-                                        
-                                            
+                                        <td>
+                                            <div class="form-check">
                                                 <label class=" form-check-label">
                                                     <input class="form-check-input" wire:click="changeQState({{ $qnair->id }},{{ $qnair->qstate }})" type="checkbox" id="status" {{ $qnair->qstate ? 'checked' : '' }} />
+                                                    <i class="input-helper"></i>
                                                 </label>
-                                            
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach

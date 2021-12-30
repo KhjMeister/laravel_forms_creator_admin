@@ -10,7 +10,13 @@
         
         @error('img_url') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
-    <button wire:click.prevent="store()" class="btn btn-success">
-    {{ __('message.confirm') }}
+    
+    <button wire:click.prevent="store()" class=" btn btn-primary btn-icon-text">
+        {{ __('message.confirm') }}
+        <i class="ti-file btn-icon-prepend"></i>
+    </button>
+    <button wire:click.prevent="cancelUpdate()" class="btn btn-secondary btn-icon-text">
+        {{ __('message.Cancel') }}
+        <i class="ti-upload btn-icon-prepend"></i>
     </button>
 </form>

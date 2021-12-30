@@ -11,11 +11,13 @@
         <input type="file" class="form-control" id="exampleFormControlInput2" wire:model="img_url" >
         @error('img_url') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
-    <button wire:click.prevent="update()" class="btn btn-dark">
+    <button wire:click.prevent="update()" class=" btn btn-primary btn-icon-text">
         {{ __('message.confirm') }}
+        <i class="ti-file btn-icon-prepend"></i>
     </button>
-    <button wire:click.prevent="cancelUpdate()" class="btn btn-secondary">
+    <button wire:click.prevent="cancelUpdate()" class="btn btn-secondary btn-icon-text">
         {{ __('message.Cancel') }}
+        <i class="ti-upload btn-icon-prepend"></i>
     </button>
 
 </form>
