@@ -51,6 +51,7 @@ class Category extends Component
     }
     private function resetInputFields(){
         $this->name = '';
+        $this->img_url = '';
     }
     public function store()
     {
@@ -76,7 +77,7 @@ class Category extends Component
         Cat::find($id)->delete();
         session()->flash('message', 'delete');
     }
-    
+
     public function update()
 
     {
@@ -84,19 +85,21 @@ class Category extends Component
 
         $validatedDate = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'old_img_url' => ['required']
+            
         ]);
-        if($image =  $this->img_url->store('uploads','public')){
-            File::delete(public_path('storage/').$this->getOneCategory($this->c_id)->img_url);
+        if($this->img_url){
+            if($image =  $this->img_url->store('uploads','public')){
+                File::delete(public_path('storage/').$this->getOneCategory($this->c_id)->img_url);
+                $cat->update([
+                    'name' => $this->name,
+                    'img_url' => $image,
+                ]);
+            }
+        }elseif(!$this->img_url) {
             $cat->update([
                 'name' => $this->name,
-                'img_url' => $image,
             ]);
-        } else {
-            $cat->update([
-                'name' => $this->name,
-            ]);
-        }
+        } 
         $this->updateMode = false;
         $this->resetInputFields();
         session()->flash('message', 'updated');
