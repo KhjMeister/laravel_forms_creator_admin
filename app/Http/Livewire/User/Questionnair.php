@@ -5,23 +5,36 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Questionnair as Quest;
+use Livewire\WithPagination;
 
 class Questionnair extends Component
 {
-    public $qunair,$qunairs,$name,$q_id,$c_id,$u_id;
+    public 
+    $qunair,
+    // $qunairs,
+    $name,
+    $q_id,
+    $c_id,
+    $u_id;
+    
     public $updateQN = false;
+    public $search = '';
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
+
     public function mount()
     {
         $this->u_id = Auth::id();
         //  $this->getQNairs();
     }
 
-    public function getQNairs()
-    {
-        $this->qunairs = Quest::get()->where(
-            'u_id' , $this->u_id,
-        );
-    }
+    // public function getQNairs()
+    // {
+    //     $this->qunairs = Quest::get()->where(
+    //         'u_id' , $this->u_id,
+    //     );
+    // }
     private function resetInputFields(){
         $this->name = '';
     }
@@ -31,8 +44,13 @@ class Questionnair extends Component
     }
     public function render()
     {
-        $this->getQNairs();
-        return view('livewire.user.questionnair.questionnair');
+        // $this->getQNairs();
+        return view('livewire.user.questionnair.questionnair',[
+            'qunairs'=> Quest::where([
+               [ 'u_id' , $this->u_id],
+               ['qname', 'like', '%'.$this->search.'%']
+            ])->paginate(4)
+        ]);
     }
 
     public function storeQNair()

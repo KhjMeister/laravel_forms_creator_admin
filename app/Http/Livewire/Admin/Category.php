@@ -6,21 +6,37 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File; 
+use Livewire\WithPagination;
+
 
 use App\Models\Category as Cat;
 
 class Category extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
-    public $c_id,$name,$img_url,$old_img_url,$u_id,$active_state,$categorys;
+    public 
+    $c_id,
+    $name,
+    $img_url,
+    $old_img_url,
+    $u_id,
+    $active_state;
+    // $categorys;
+
+    public $search = '';
     public $updateMode = false;
     public $createMode = false;
+    
 
     public function render()
     {
-        $this->categorys =Cat::all();
-        return view('livewire.admin.category.category');
+        // $this->categorys =Cat::all();
+        return view('livewire.admin.category.category',[
+            'categorys' => Cat::where('name', 'like', '%'.$this->search.'%')->paginate(5)
+        ]);
     }
     public function getOneCategory($id)
     {

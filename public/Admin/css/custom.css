@@ -1,13 +1,15 @@
+
 #navbar-search-input
 {
+    
     text-align: right;
 }
 .nav .flex-column .sub-menu li{
     list-style: none;
 }
 .move-1 {
-    -webkit-animation: move1 9s infinite;
-    animation: move1 9s infinite;
+    -webkit-animation: move1 5s infinite;
+    animation: move1 5s infinite;
 }
 
 @-webkit-keyframes move1 {
@@ -42,4 +44,10 @@
         -webkit-transform: rotate(-1deg) translate(-2px, -2px);
         transform: rotate(-1deg) translate(-2px, -2px)
     }
+}
+
+/* Pagination */
+
+.mypaginate{
+    margin-right: 35%;
 }

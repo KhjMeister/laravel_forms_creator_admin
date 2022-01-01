@@ -1,5 +1,5 @@
 <!doctype html>
-<html  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,14 +31,14 @@
             </button>
             <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
-                <div class="input-group">
+              <div class="input-group">
                 
-                <input type="text" class="form-control " id="navbar-search-input" placeholder="{{ __('Search') }}" aria-label="search" aria-describedby="search">
-                <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                    <span class="input-group-text" id="search">
-                        <i class="icon-search"></i>
-                    </span>
-                </div>
+                  <input type="text" class="form-control " id="navbar-search-input" placeholder="{{ __('Search') }}" aria-label="search" aria-describedby="search">
+                  <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                      <span class="input-group-text" id="search">
+                          <i class="icon-search"></i>
+                      </span>
+                  </div>
               </div>
             </li>
             </ul>
@@ -102,6 +102,11 @@
                         
                         {{ __('message.category') }}
                     </a>
+                    <a class="dropdown-item" href="{{ route('users.index') }}">
+                        <i class="icon-head menu-icon text-primary"></i>  
+                        
+                        {{ __('message.users') }}
+                    </a>
                     
                   @endif
                   
@@ -130,9 +135,9 @@
               </li>
               
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="icon-menu"></span>
-            </button>
+            <!-- <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="icon-menu">ffff</span>
+            </button> -->
         </div>
         </nav>
         <div class="container-fluid page-body-wrapper">
@@ -327,19 +332,14 @@
               <span class="menu-title">{{__('message.category')}}</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" href="{{ route('users.index') }}">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">مدیریت کاربران</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">{{__('message.users')}}</span>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu" >
-                <li class="nav-item"> <a class="nav-link" href="#"> کاربران  </a></li>
-                <li class="nav-item"> <a class="nav-link" href="#"> ایجاد دسترسی </a></li>
-              </ul>
-            </div>
           </li>
+          
           @endif
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">

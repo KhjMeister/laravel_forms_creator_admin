@@ -60,6 +60,16 @@ return [
     'privateMSG' => 'پیام شخصی',
     'userRigestered' => 'کاربر ثبت نام کرد',
     'daysAgo' => 'یک روز قبل',
-
+    'users' => 'کاربران',
+    'deActivate' => 'غیر فعال کردن',
+    'activeType' => 'نوع حساب',
+    'activeTime' => 'زمان فعال بودن حساب',
+    'activeOne' => 'درجه 1',
+    'activeTwo' => 'درجه 2 ',
+    'activeThree' => 'درجه 3',
+    'notActive' => 'غیر فعال',
+    'dayLeft' => ' روز باقی مانده',
+    'activate' => 'فعال کردن',
+    
 
 ];

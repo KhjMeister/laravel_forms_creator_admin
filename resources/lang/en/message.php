@@ -54,13 +54,23 @@ return [
     'wellcome' => 'Wellcome',
     'ChLang' => 'Choose Your Language',
     'notifications' => 'Notifications',
-
     'news' => 'News',
     'justNow' => 'Just Now',
     'messagees' => 'Messages',
     'privateMSG' => 'Privaite Messages',
     'userRigestered' => 'User Regestered',
     'daysAgo' => 'Day Ago',
+    'users' => 'Users',
+
+    'deActivate' => 'Dactivate',
+    'activeType' => 'Account Type',
+    'activeTime' => 'Permume Time',
+    'activeOne' => 'Full Permume',
+    'activeTwo' => 'Medume Permume',
+    'activeThree' => 'Entery Permume',
+    'notActive' => 'Not Active',
+    'dayLeft' => 'Days Left',
+    'activate' => 'Activate',
     
     
     

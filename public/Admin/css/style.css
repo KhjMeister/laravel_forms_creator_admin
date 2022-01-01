@@ -28659,7 +28659,7 @@ div.tagsinput span.tag a {
     transition: all 0.25s ease-out;
   }
   .sidebar-offcanvas.active {
-    left: 0;
+    right: 0;
   }
 }
 
@@ -29868,7 +29868,7 @@ div.tagsinput span.tag a {
   .sidebar-icon-only .sidebar .nav {
     overflow: visible;
     margin-left: 4px;
-margin-right: -34px;
+  margin-right: -18px;
   }
   .sidebar-icon-only .sidebar .nav .nav-item {
     position: relative;

@@ -18,8 +18,14 @@
 <div class="card">
     <div class="card-body">
         <div >
-            <p class="card-title mb-0">{{__('message.category')}}</p>
-            
+            <div class="row">
+                <p class="card-title mb-0 col-4">{{__('message.category')}}</p>
+                <div class="col-4">
+                    <div class="input-group">
+                        <input wire:model="search" type="text" class="form-control " id="navbar-search-input" placeholder="{{ __('Search') }}" aria-label="search" aria-describedby="search">
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 
                 <div class="card-body">
@@ -75,8 +81,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                        
+                    </div>
+                    <div class="mypaginate">
+                        {{ $categorys->links('vendor.livewire.simple-bootstrap') }}
                     </div>
                     @endif
                 </div>
