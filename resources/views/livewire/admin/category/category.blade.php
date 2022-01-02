@@ -36,7 +36,7 @@
                     @else
                     
                     <div>
-                    <button wire:click="addCategory()" class="btn btn-inverse-primary btn-icon-text">
+                    <button wire:click="addCategory()" class="btn btn-outline-primary btn-icon-text">
                         {{__('message.create')}}
                         <i class="ti-file btn-icon-prepend"></i>
                     </button>
@@ -60,11 +60,11 @@
                                         <img style="width:200px;height:auto;" src="{{ asset('storage/'.$cats->img_url) }}" alt="image">
                                     </td>     
                                     <td>
-                                        <button wire:click="edit({{ $cats->id }})" class="btn btn-inverse-secondary btn-icon-text btn-sm">
+                                        <button wire:click="edit({{ $cats->id }})" class="btn btn-outline-secondary btn-icon-text btn-sm">
                                             {{__('message.edite')}}
                                             <i class="ti-reload btn-icon-prepend"></i>
                                         </button>
-                                        <button wire:click="delete({{ $cats->id }})" class="btn btn-inverse-danger btn-icon-text btn-sm">
+                                        <button wire:click="delete({{ $cats->id }})" class="btn btn-outline-danger btn-icon-text btn-sm">
                                             {{__('message.delete')}}
                                             <i class="ti-trash btn-icon-prepend"></i>
                                         </button>

@@ -10,11 +10,13 @@
 
    
     
+    <link rel="stylesheet" href="{{ asset('Admin/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/css/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/ti-icons/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('Admin/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('Admin/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('Admin/css/jquery.ui.css') }}">
     <link rel="shortcut icon" href="{{ asset('Admin/images/favicon.png') }}" />
     @livewireStyles
 </head>
@@ -427,16 +429,25 @@
     
     </div>
     
+        @livewireScripts
         <script src="{{ asset('Admin/js/vendor.bundle.base.js') }}"></script>
+       <script src="{{ asset('Admin/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('Admin/js/template.js') }}"></script>
         <script src="{{ asset('Admin/js/dashboard.js') }}"></script>
-        @livewireScripts
+ 
+
+        <script src="{{ asset('Admin/js/formbuilder/jquery.ui.js') }}"></script>
+        <script src="{{ asset('Admin/js/formbuilder/app.js') }}"></script>
+        <script src="{{ asset('Admin/js/formbuilder/template.js') }}"></script>
+
+    
 
         <script type="text/javascript">
             var url = "{{ route('changeLang') }}";
             $(".changeLang").change(function(){
                 window.location.href = url + "?lang="+ $(this).val();
             });
+            
         </script>
     </div>
 </body>
