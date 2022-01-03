@@ -71,6 +71,8 @@ return [
     'notActive' => 'Not Active',
     'dayLeft' => 'Days Left',
     'activate' => 'Activate',
+    'question' => 'Question',
+    
     
     
     

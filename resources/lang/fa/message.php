@@ -70,6 +70,8 @@ return [
     'notActive' => 'غیر فعال',
     'dayLeft' => ' روز باقی مانده',
     'activate' => 'فعال کردن',
+    'question' => 'سوال',
+    
     
 
 ];

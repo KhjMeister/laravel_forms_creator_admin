@@ -6,11 +6,17 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Questionnair as Quest;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+
 
 class Questionnair extends Component
 {
+    use WithPagination;
+
+
     public $questionPart = true;
     public $indexPart = false;
+    public $QTAPart = false;
     public 
     $qunair,
     // $qunairs,
@@ -21,13 +27,19 @@ class Questionnair extends Component
     
     public $updateQN = false;
     public $search = '';
-    use WithPagination;
     protected $paginationTheme = 'bootstrap';
+
+
+    // this are for question
+    public $allQuestion,$sText, $stype, $sstate, $force_answer, $image_url, $video_url;
 
 
     public function mount()
     {
         $this->u_id = Auth::id();
+        $this->questionPart = true;
+        $this->indexPart = false;
+        $this->QTAPart = false;
         //  $this->getQNairs();
     }
 
@@ -64,13 +76,17 @@ class Questionnair extends Component
         $validatedDate = $this->validate([
             'name' => ['required', 'string', 'max:255'], 
         ]);
-         Quest::insert([
-            'qname' => $validatedDate['name'],
-            'u_id' => $this->u_id,
-            'qstate' => 0,
-            'c_id' => 1,
-        ]);
-        $this->resetInputFields();
+        $itemsID = DB::table('questionnairs')->insertGetId([ 
+            'qname' =>  $validatedDate['name'],
+            'u_id' =>  $this->u_id,
+            'c_id' =>  1,
+            'qstate' =>  0
+            ]);
+        
+        // $this->resetInputFields();
+
+        $this->q_id =$itemsID;
+        $this->name =$validatedDate['name'];
         // session()->flash('message', 'createQNair');
         $this->Change_to_question();
     }
@@ -128,8 +144,22 @@ class Questionnair extends Component
     public function Change_to_question()
     {
         $this->questionPart = true;
-        $this->indexPart = false;
-        
+        $this->indexPart = false; 
     }
 
+    public function Change_to_Add_questionT()
+    {
+        if($this->QTAPart === false){
+            $this->QTAPart = true;
+        }else{
+            $this->QTAPart = false;
+        }
+
+    }
+
+    public function storeTQuestion()
+    {
+        
+        $this->QTAPart = false;
+    }
 }
