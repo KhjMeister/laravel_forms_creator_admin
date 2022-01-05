@@ -18,6 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->string('stext');
             $table->integer('stype');
             $table->integer('q_id');
+            // $table->foreignId('q_id')->constrained('questionnairs');
+            // $table->foreignId('u_id')->constrained('users');
             $table->integer('u_id');
             $table->integer('sstate')->default(0);
             $table->boolean('force_answer')->default(0);

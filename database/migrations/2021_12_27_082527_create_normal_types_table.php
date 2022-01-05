@@ -18,6 +18,7 @@ class CreateNormalTypesTable extends Migration
             $table->string('htext');
             $table->text('hbigtext');
             $table->integer('n_id');
+            // $table->foreignId('n_id')->constrained('questions')
             $table->integer('ntype');
             $table->timestamps();
         });

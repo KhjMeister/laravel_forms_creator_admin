@@ -17,6 +17,8 @@ class CreateQuestionnairsTable extends Migration
             $table->id();
             $table->string('qname');
             $table->integer('c_id');
+            // $table->foreignId('c_id')->constrained('categories');
+            // $table->foreignId('u_id')->constrained('users');
             $table->integer('u_id');
             $table->integer('qstate')->default(0);
             $table->timestamps();

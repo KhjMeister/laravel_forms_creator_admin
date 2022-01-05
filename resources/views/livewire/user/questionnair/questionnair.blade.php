@@ -136,7 +136,7 @@
 
     </div>
 
-@elseif($questionPart)
-    @include('livewire.user.questionnair.createQuestion')
-@endif
+    @elseif($questionPart)
+        @include('livewire.user.questionnair.createQuestion')
+    @endif
 </div>

@@ -18,6 +18,7 @@ class CreateCategory extends Migration
             $table->string('name');
             $table->string('img_url');
             $table->integer('u_id');
+            // $table->foreignId('u_id')->constrained('users');
             $table->boolean('active_state')->default(false);
             $table->timestamps();
         });

@@ -12,13 +12,19 @@ use Illuminate\Support\Facades\DB;
 
 class Questionnair extends Component
 {
+    // ایجاد صفحه بندی برای پرسش نامه های کاربر
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
-
+    // متغیرها برای تغییر صفحه به قسمت سوالات  
     public $questionPart = false;
     public $indexPart = true;
 
+    public $updateQN = false;
     public $QTAPart = false;
+
+    public $allQuestionsPart = true;
+    // متغیرها برای قسمت پرسش نامه
     public 
     $qunair,
     // $qunairs,
@@ -26,16 +32,14 @@ class Questionnair extends Component
     $q_id,
     $c_id,
     $u_id;
-    
-    public $updateQN = false;
+    // جستجو
     public $search = '';
-    protected $paginationTheme = 'bootstrap';
 
 
-    // this are for question
-    public $allQuestion,$sText, $stype, $sstate, $force_answer, $image_url, $video_url;
+    // متغیرهای لازم برای سوالات
+    public $s_id,$allQuestion,$question,$sText, $stype, $sstate, $force_answer, $image_url, $video_url;
 
-
+    // قبل از لود شدن صفحه این متد اجرا می شود 
     public function mount()
     {
         $this->u_id = Auth::id();
@@ -51,17 +55,26 @@ class Questionnair extends Component
     //         'u_id' , $this->u_id,
     //     );
     // }
+
+    // ریست کردن متغیرهای نام پرسش نامه و سوال
     private function resetInputFields(){
         $this->name = '';
         $this->sText = '';
     }
     // getting 1 QuestionNair info
+
+    // گرفتن یک پرسش نامه و ذخیره در متغیر عمومی
     public function getOneQNair($id)
     {
         $this->qunair = Quest::find($id);
     }
+    // گرفتن یک سوال و ذخیره در متغیر عمومی
+    public function getOneQuestion($id)
+    {
+        $this->question = Deseptive::find($id);
+    }
+    // رندر کردن ویو صفحه به همرا اطلاعات پرسش نامه ها
 
-    // Renderring The page
     public function render()
     {
         // $this->getQNairs();
@@ -73,7 +86,7 @@ class Questionnair extends Component
         ]);
     }
 
-    // Storing Question Nair Name
+    // ذخیره اطلاعات پرسشنامه
     public function storeQNair()
     {
         $validatedDate = $this->validate([
@@ -93,13 +106,13 @@ class Questionnair extends Component
         // session()->flash('message', 'createQNair');
         $this->Change_to_question();
     }
-    // Deleting 1 QuestionNair 
+    // حذف پرسش نامه به همراه تمام سوالات زیر مجموعه اش
     public function deleteQNair($id)
     {
         Quest::find($id)->delete();
         session()->flash('message', 'deleteQNair');
     }
-    //  Changing Active Or Deactivity of Question Nair
+    //  تغیر فعال و غیر فعال بودن پرسش نامه
     public function changeQState($id,$qstate)
     {
         if($qstate === 1){
@@ -112,7 +125,7 @@ class Questionnair extends Component
             ]);
         }
     }
-    // Edite Part for Question Nair
+    // باز کردن قسمت ویرایش پرسش نامه
     public function editQNair($id)
     {
         $qust = Quest::findOrFail($id);
@@ -120,7 +133,7 @@ class Questionnair extends Component
         $this->name = $qust->qname;
         $this->updateQN = true;
     }
-    // Sending Update to the Sever
+    // ارسال اطلاعات ویرایش شده به قسمت سرور
     public function updateQNair()
     {
         Quest::where('id',$this->q_id)->update([
@@ -130,7 +143,7 @@ class Questionnair extends Component
         $this->resetInputFields();
         session()->flash('message', 'updateQNair');
     }
-    // Getting info of 1 QuestionNair
+    // ست کردن اطلاعات یک پرسش نامه
     public function showQNair($id)
     {
         $qust = Quest::findOrFail($id);
@@ -138,12 +151,13 @@ class Questionnair extends Component
         $this->name = $qust->qname;
 
     }
-    
+    // تغیر صفحه به نمایش تمام پرسش نامه ها
     public function Change_to_index()
     {
         $this->questionPart = false;
         $this->indexPart = true;  
     }
+    // تغییر صفحه به نمایش اطلاعات یک پرسش نامه تازه ایجاد شده
     public function Change_to_question()
     {
         $this->questionPart = true;
@@ -160,6 +174,7 @@ class Questionnair extends Component
         }
 
     }
+    // تغییر صفحه به نمایش اطلاعات یک پرسش نامه از قبل ایجاد شده 
     public function show_questions($qid)
     {
 
@@ -179,6 +194,7 @@ class Questionnair extends Component
         }
 
     }
+    // نمایش قسمت ایجاد یک سوال تشریحی با جواب کوتاه
     public function Change_to_Add_questionT()
     {
         if($this->QTAPart === false){
@@ -188,7 +204,7 @@ class Questionnair extends Component
         }
 
     }
-
+    //  ذخیره اطلاعات سوال تشریحی با جواب کم
     public function storeTQuestion()
     {
         $validatedDate = $this->validate([
@@ -218,4 +234,47 @@ class Questionnair extends Component
          ])->get();
          $this->resetInputFields();
     }
+
+    // بخش ویرایش یک سوال
+
+    public function editeQuestion($id)
+    {
+
+        $this->getOneQuestion($id);
+
+        $this->s_id = $id;
+        $this->u_id = $this->question->u_id;
+        $this->q_id = $this->question->q_id;
+        $this->sText = $this->question->stext;
+
+        if($this->allQuestionsPart===false){
+            $this->allQuestionsPart = true;
+        }else{
+            $this->allQuestionsPart = false;
+        }
+            
+    }
+
+    public function updateQuestion()
+    {
+        $validatedDate = $this->validate([
+            'sText' => ['required', 'string', 'max:255'], 
+        ]);
+
+        Deseptive::where('id',$this->s_id)->update([
+            'stext' => $this->sText,
+            'q_id' => $this->q_id,
+            'u_id' => $this->u_id,
+        ]);
+        $this->allQuestionsPart = true;
+        $this->show_questions($this->q_id);
+        $this->resetInputFields();
+    }
+
+    public function cancelupdateQuestion()
+    {
+        $this->allQuestionsPart = true;
+        $this->show_questions($this->q_id);
+        $this->resetInputFields();
+    } 
 }

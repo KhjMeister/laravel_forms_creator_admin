@@ -72,10 +72,8 @@
     </div>
     <br>
     <div class="card">
-    @if($allQuestion)
+    @if($allQuestionsPart)
         
-            
-       
         <div class="table-responsive">  
             <table class="table table-striped table-borderless ">
                 <thead>
@@ -84,6 +82,7 @@
                     
                     <th >{{__('message.status')}}</th>
                     <th >{{__('message.stype')}}</th>
+                    <th >{{__('Action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,6 +104,10 @@
                                 <span class="badge badge-secondary">متنی با پاسخ کوتاه</span>
                             @endif
                         </td>
+
+                        <td>
+                            <button wire:click="editeQuestion({{ $question->id }})" class="btn btn-outline-info">{{__('message.edite')}}</button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -113,7 +116,7 @@
 
 
     @else
-        <span class="alert alert-warning">سوالی هنوز وجود ندارد</span>
+        @include('livewire.user.questionnair.updateQuestion')
     @endif
     </div>
 </div>
