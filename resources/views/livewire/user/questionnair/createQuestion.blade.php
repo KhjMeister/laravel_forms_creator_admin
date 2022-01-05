@@ -1,10 +1,9 @@
-<div>
-    
+<div >
     <div class="card">
         <div class="card-body">
            <div class="row">
                 <div class="col-10">
-                    <p class="card-title mb-0 "> سوالات خود را به پرسش نامه ... اضافه کنید</p>
+                    <p class="card-title mb-0 ">  سوالات خود را اضافه کنید</p>
                 </div>
                 <div class="col-2">
                     <a wire:click="Change_to_index()" href="#" class="btn btn-outline-secondary">{{ __('message.back')}}</a>
@@ -66,9 +65,55 @@
                 </div>
             </div> -->
 
+            
     
         
+        </div>
     </div>
+    <br>
+    <div class="card">
+    @if($allQuestion)
+        
+            
+       
+        <div class="table-responsive">  
+            <table class="table table-striped table-borderless ">
+                <thead>
+                    <tr>
+                    <th>{{__('message.questText')}}</th>
+                    
+                    <th >{{__('message.status')}}</th>
+                    <th >{{__('message.stype')}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($allQuestion as $question)
+                    <tr>
+                        <td>
+                            {{ $question->stext }}
+                        </td>
+                        
+                        <td>
+                            @if($question->sstate === 0)
+                                    <span class="badge badge-danger">غیرفعال</span>
+                            @elseif($question->sstate === 1)
+                            <span class="badge badge-success">فعال</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($question->stype === 1)
+                                <span class="badge badge-secondary">متنی با پاسخ کوتاه</span>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-    
+
+    @else
+        <span class="alert alert-warning">سوالی هنوز وجود ندارد</span>
+    @endif
+    </div>
 </div>

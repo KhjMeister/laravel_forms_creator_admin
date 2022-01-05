@@ -71,7 +71,9 @@ return [
     'dayLeft' => ' روز باقی مانده',
     'activate' => 'فعال کردن',
     'question' => 'سوال',
+    'stype' => 'نوع سوال',
     
+    'questText' => 'متن سوال',
     
 
 ];

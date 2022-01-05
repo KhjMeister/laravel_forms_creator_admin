@@ -89,7 +89,7 @@
                                                 </td>
                                                 <td>
                                                     <button wire:click="deleteQNair({{ $qnair->id }})" class="btn btn-outline-danger btn-sm">{{__('message.delete')}}</button>
-                                                    <button  class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#showModal">{{__('message.show')}}</button>
+                                                    <button type="button" data-toggle="minimize" wire:click="show_questions({{ $qnair->id }})" class="btn btn-outline-info btn-sm">{{__('message.show')}}</button>
                                                     <button wire:click="editQNair({{ $qnair->id }})" class="btn btn-outline-primary btn-sm">{{__('message.edite')}}</button>       
                                                 </td>
                                                 <td>

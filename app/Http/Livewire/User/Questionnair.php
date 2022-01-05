@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Questionnair as Quest;
+use App\Models\Question as Deseptive;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class Questionnair extends Component
     use WithPagination;
 
 
-    public $questionPart = true;
-    public $indexPart = false;
+    public $questionPart = false;
+    public $indexPart = true;
+
     public $QTAPart = false;
     public 
     $qunair,
@@ -37,8 +39,8 @@ class Questionnair extends Component
     public function mount()
     {
         $this->u_id = Auth::id();
-        $this->questionPart = true;
-        $this->indexPart = false;
+        $this->questionPart = false;
+        $this->indexPart = true;
         $this->QTAPart = false;
         //  $this->getQNairs();
     }
@@ -51,6 +53,7 @@ class Questionnair extends Component
     // }
     private function resetInputFields(){
         $this->name = '';
+        $this->sText = '';
     }
     // getting 1 QuestionNair info
     public function getOneQNair($id)
@@ -83,7 +86,7 @@ class Questionnair extends Component
             'qstate' =>  0
             ]);
         
-        // $this->resetInputFields();
+        $this->resetInputFields();
 
         $this->q_id =$itemsID;
         $this->name =$validatedDate['name'];
@@ -145,8 +148,37 @@ class Questionnair extends Component
     {
         $this->questionPart = true;
         $this->indexPart = false; 
-    }
 
+        if($this->allQuestion){
+            $this->allQuestion = Deseptive::where([
+                [ 'q_id' , $this->q_id],
+             ])->get();
+        }elseif(!$this->allQuestion){
+            $this->allQuestion = Deseptive::where([
+                [ 'q_id' , $this->q_id],
+             ])->get();
+        }
+
+    }
+    public function show_questions($qid)
+    {
+
+        $this->questionPart = true;
+        $this->indexPart = false; 
+        $this->q_id = $qid;
+        
+
+        if($this->allQuestion){
+            $this->allQuestion = Deseptive::where([
+                [ 'q_id' , $this->q_id],
+             ])->get();
+        }elseif(!$this->allQuestion){
+            $this->allQuestion = Deseptive::where([
+                [ 'q_id' , $this->q_id],
+             ])->get();
+        }
+
+    }
     public function Change_to_Add_questionT()
     {
         if($this->QTAPart === false){
@@ -159,7 +191,31 @@ class Questionnair extends Component
 
     public function storeTQuestion()
     {
+        $validatedDate = $this->validate([
+            'sText' => ['required', 'string', 'max:255'], 
+            
+        ]);
         
         $this->QTAPart = false;
+        $this->stype = 1;
+        // $this->sstate = 0;
+        // $this->force_answer = 0;
+        // $this->image_url = '';
+        // $this->video_url = '';
+
+        
+        Deseptive::insert([
+             'stext' => $validatedDate['sText'],
+             'stype' => $this->stype,
+             'q_id' => $this->q_id,
+             'u_id' => $this->u_id,
+        ]);
+        
+        // session()->flash('message', 'createQuestion');
+
+        $this->allQuestion = Deseptive::where([
+            [ 'q_id' , $this->q_id],
+         ])->get();
+         $this->resetInputFields();
     }
 }

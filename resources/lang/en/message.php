@@ -72,6 +72,12 @@ return [
     'dayLeft' => 'Days Left',
     'activate' => 'Activate',
     'question' => 'Question',
+
+    'stype' => 'Question Type',
+    'questText' => 'Question Text',
+    
+
+    
     
     
     
