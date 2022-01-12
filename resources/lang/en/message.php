@@ -75,8 +75,12 @@ return [
 
     'stype' => 'Question Type',
     'questText' => 'Question Text',
-    
+    'sActivate' => 'Activeate',
+    'fileSection' => 'Adding image or Video',
+    'forceAnswer' => 'Force Answere',
+    'video' => 'Video',
 
+    
     
     
     

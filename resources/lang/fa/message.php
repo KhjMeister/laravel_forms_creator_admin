@@ -74,6 +74,10 @@ return [
     'stype' => 'نوع سوال',
     
     'questText' => 'متن سوال',
+    'sActivate' => 'فعال کردن',
+    'fileSection' => 'عکس یا ویدیو',
+    'forceAnswer' => 'پاسخ اجباری',
+    'video' => 'ویدیو',
     
 
 ];

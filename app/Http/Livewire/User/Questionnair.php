@@ -22,6 +22,10 @@ class Questionnair extends Component
 
     public $updateQN = false;
     public $QTAPart = false;
+    public $fileSection= false;
+
+   
+    
 
     public $allQuestionsPart = true;
     // متغیرها برای قسمت پرسش نامه
@@ -46,22 +50,14 @@ class Questionnair extends Component
         $this->questionPart = false;
         $this->indexPart = true;
         $this->QTAPart = false;
-        //  $this->getQNairs();
+        
     }
-
-    // public function getQNairs()
-    // {
-    //     $this->qunairs = Quest::get()->where(
-    //         'u_id' , $this->u_id,
-    //     );
-    // }
 
     // ریست کردن متغیرهای نام پرسش نامه و سوال
     private function resetInputFields(){
         $this->name = '';
         $this->sText = '';
     }
-    // getting 1 QuestionNair info
 
     // گرفتن یک پرسش نامه و ذخیره در متغیر عمومی
     public function getOneQNair($id)
@@ -209,13 +205,15 @@ class Questionnair extends Component
     {
         $validatedDate = $this->validate([
             'sText' => ['required', 'string', 'max:255'], 
-            
+            // 'img_url' => 'image|max:2048',
+            // 'video_url' => 'video|max:10048',
         ]);
         
         $this->QTAPart = false;
         $this->stype = 1;
-        // $this->sstate = 0;
-        // $this->force_answer = 0;
+        if(!$this->sstate)$this->sstate = 0;else$this->sstate = 1;
+        // if(!$this->force_answer)$this->force_answer = 0;else$this->force_answer = 1;
+
         // $this->image_url = '';
         // $this->video_url = '';
 
@@ -225,6 +223,8 @@ class Questionnair extends Component
              'stype' => $this->stype,
              'q_id' => $this->q_id,
              'u_id' => $this->u_id,
+             'sstate'=>$this->sstate,
+             'force_answer'=>$this->force_answer
         ]);
         
         // session()->flash('message', 'createQuestion');
@@ -277,4 +277,12 @@ class Questionnair extends Component
         $this->show_questions($this->q_id);
         $this->resetInputFields();
     } 
+    public function change_file_section()
+    {
+        if ($this->fileSection) {
+            $this->fileSection= false;
+        }else{
+            $this->fileSection= true;
+        }
+    }
 }
