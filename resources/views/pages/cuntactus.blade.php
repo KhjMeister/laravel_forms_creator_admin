@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid content-register">
+    <div class="container-fluid content-register">
         <div class="row ">
             <div class="col-lg-1">
                 

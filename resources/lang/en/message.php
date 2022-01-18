@@ -79,7 +79,10 @@ return [
     'fileSection' => 'Adding image or Video',
     'forceAnswer' => 'Force Answere',
     'video' => 'Video',
-
+    'qnrLink' => 'Question Nair Link',
+    'qnrUrl' => 'Start ',
+    'Start' => 'Start ',
+    
     
     
     

@@ -543,3 +543,11 @@ body {
         transform: rotate(1deg) translate(2px, 2px)
     }
 }
+
+.text-question {
+  color: #ef600d;
+  margin-right: 12rem;
+}
+.mt-10{
+  margin-top : 10rem;
+}

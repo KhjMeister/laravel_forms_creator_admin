@@ -8,7 +8,7 @@ use App\Models\Questionnair as Quest;
 use App\Models\Question as Deseptive;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 
 class Questionnair extends Component
 {
@@ -16,13 +16,14 @@ class Questionnair extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    // متغیرها برای تغییر صفحه به قسمت سوالات  
+    // متغیرها برای تغییر صفحه به قسمت های مختلف  
     public $questionPart = false;
     public $indexPart = true;
 
     public $updateQN = false;
     public $QTAPart = false;
     public $fileSection= false;
+
 
    
     
@@ -85,6 +86,7 @@ class Questionnair extends Component
     // ذخیره اطلاعات پرسشنامه
     public function storeQNair()
     {
+       
         $validatedDate = $this->validate([
             'name' => ['required', 'string', 'max:255'], 
         ]);
@@ -113,12 +115,19 @@ class Questionnair extends Component
     {
         if($qstate === 1){
              Quest::where('id',$id)->update([
-            'qstate' => 0
+            'qstate' => 0,
+            'qnr_url'=> ''
         ]);
-        }elseif($qstate === 0){
+        $this->render();
+        }
+        elseif($qstate === 0){
+             $random = Str::random(40);
             Quest::where('id',$id)->update([
-                'qstate' => 1
+                'qstate' => 1,
+                'qnr_url'=> $random
             ]);
+        $this->render();
+
         }
     }
     // باز کردن قسمت ویرایش پرسش نامه
@@ -182,11 +191,11 @@ class Questionnair extends Component
         if($this->allQuestion){
             $this->allQuestion = Deseptive::where([
                 [ 'q_id' , $this->q_id],
-             ])->get();
+             ])->orderBy('number', 'asc')->get();
         }elseif(!$this->allQuestion){
             $this->allQuestion = Deseptive::where([
                 [ 'q_id' , $this->q_id],
-             ])->get();
+             ])->orderBy('number', 'asc')->get();
         }
 
     }
@@ -203,6 +212,8 @@ class Questionnair extends Component
     //  ذخیره اطلاعات سوال تشریحی با جواب کم
     public function storeTQuestion()
     {
+        $bigest = Deseptive::where('q_id',$this->q_id)->max('number');
+        $bigest++;
         $validatedDate = $this->validate([
             'sText' => ['required', 'string', 'max:255'], 
             // 'img_url' => 'image|max:2048',
@@ -224,7 +235,10 @@ class Questionnair extends Component
              'q_id' => $this->q_id,
              'u_id' => $this->u_id,
              'sstate'=>$this->sstate,
-             'force_answer'=>$this->force_answer
+             'force_answer'=>$this->force_answer,
+             'number'=>$bigest,
+             'number_status'=>true,
+            //  'created_at' => now()
         ]);
         
         // session()->flash('message', 'createQuestion');

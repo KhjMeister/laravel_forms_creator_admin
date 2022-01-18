@@ -79,6 +79,7 @@
                                             <th>{{__('Name')}}</th>
                                             <th >{{__('Action')}}</th>
                                             <th >{{__('message.status')}}</th>
+                                            <th >{{__('message.qnrLink')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,6 +100,9 @@
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-outline-primary" target="_blank" href="answer/{{ $qnair->qnr_url }}">{{__('message.qnrUrl')}}</a> 
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class normalType extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'htext',
+        'hbigtext',
+        'n_id',
+        'ntype'
+    ];
 }

@@ -7,6 +7,7 @@ Auth::routes();
 Route::get('/', function () {return view('welcome');});
 
 
+
 Route::get('auth/google', [App\Http\Controllers\GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('google/callback', [App\Http\Controllers\GoogleSocialiteController::class, 'handleCallback']);
 
@@ -20,5 +21,6 @@ Route::get('/questionnair' , [App\Http\Controllers\Admin\QuestionnairController:
 Route::get('/categories' , [App\Http\Controllers\CategoryController::class,'index'])->name('categories.index');
 Route::get('/users' , [App\Http\Controllers\Admin\UserController::class,'index'])->name('users.index');
 
+Route::get('answer/{qnrurl}' , [App\Http\Controllers\qnrController::class,'index']);
 
 

@@ -78,6 +78,9 @@ return [
     'fileSection' => 'عکس یا ویدیو',
     'forceAnswer' => 'پاسخ اجباری',
     'video' => 'ویدیو',
+    'qnrLink' => 'لینک ',
+    'qnrUrl' => 'شروع ',
+    'Start' => 'شروع ',
     
 
 ];
