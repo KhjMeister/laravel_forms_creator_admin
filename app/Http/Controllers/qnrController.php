@@ -8,7 +8,7 @@ class qnrController extends Controller
 {
     public function index($qnrurl)
     {
-       
-        return view('pages.qnr',compact('qnrurl'));
+       $ipp = request()->ip();
+        return view('pages.qnr',compact('qnrurl','ipp'));
     }
 }

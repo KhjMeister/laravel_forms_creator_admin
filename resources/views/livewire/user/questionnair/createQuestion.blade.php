@@ -6,7 +6,8 @@
                     <p class="card-title mb-0 ">  سوالات خود را اضافه کنید</p>
                 </div>
                 <div class="col-2">
-                    <a wire:click="Change_to_index()" href="#" class="btn btn-outline-secondary">{{ __('message.back')}}</a>
+                    <a wire:click="Change_to_index()" href="#" class="btn btn-outline-secondary btn-sm">{{ __('message.back')}}</a>
+                    <a  class="btn btn-outline-primary btn-sm" target="_blank" href="answer/{{ $qunair->qnr_url }}">{{__('message.qnrUrl')}}</a> 
                 </div>
            </div>
 
@@ -14,13 +15,13 @@
                 <div class="col-3">
                     <div class="row">
                     <div class="col-12 mb-1">
-                            <a wire:click="Change_to_Add_questionT()" class="btn btn-outline-secondary">
+                            <a wire:click="Change_to_Add_questionT()" class="btn btn-sm btn-outline-secondary">
                                  تشریحی پاسخ کوتاه
                             </a>
                         </div>
                         
                         <div class="col-12">
-                            <a class="btn btn-outline-secondary">
+                            <a class="btn btn-outline-secondary btn-sm">
                              تشریحی با پاسخ زیاد
                             </a>
                         </div>
@@ -106,8 +107,10 @@
                         </td>
 
                         <td>
-                            <button wire:click="editeQuestion({{ $question->id }})" class="btn btn-outline-info">{{__('message.edite')}}</button>
+                            <button wire:click="editeQuestion({{ $question->id }})" class="btn btn-outline-info btn-sm">{{__('message.edite')}}</button>
+                            <button wire:click="deletequestion({{ $question->id }})" class="btn btn-outline-danger btn-sm">{{ __('Delete') }}</button>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>

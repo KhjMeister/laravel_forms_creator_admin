@@ -1,6 +1,6 @@
 <div >
     
-     @if($start===false)
+     @if($start===1)
      <div class="container-fluid content-question">
         <div class="row ">
             <div class="col-lg-3">
@@ -11,15 +11,17 @@
                     <h4 class="text-question mt-2">{{ $this->qnairs->qname }}</h4>
                     <div class="row mt-2 textcard">
                         <div class="container" >
-
+                            <h6> </h6>
                             <div class="row">
                                 <div class="col-lg-5">
                                 </div>   
                                 <div class="col-lg-5 ">
-                                    <button wire:click="changeStart()" class="btn btn-lg btn-outline-secondary " >
+                                    @if(!$user_ips)
+                                    <button wire:click="changeStart(2)" class="btn btn-lg btn-outline-secondary " >
                                         {{ __('message.Start') }} 
                                        
                                     </button>
+                                    @endif
                                 </div>
                             </div>
                             <br>
@@ -32,7 +34,7 @@
             
         </div>
     </div>
-    @elseif($start === true)
+    @elseif($start === 2)
   
     <div class="container-fluid mt-5 content-question" >
         <div class="row ">
@@ -69,13 +71,14 @@
                                         </div>
                                         <br>
                                         <div class="col-lg-12 mt-3 mb-3" dir="ltr">
-                                            @if($qnaircount>$number)
+                                            @if($qnaircount>=$number)
                                                 <button class="btn btn-outline-success" wire:click.prevent="addAnswer({{ $onequestion->id }},0);">بعدی</button>
                                             @else
                                                 <button class="btn btn-outline-info finish" wire:click.prevent="addAnswer({{ $onequestion->id }},1);">اتمام</button>
+                                                آیا مطمئن هستید ؟
                                             @endif 
                                             @if($qnaircount > $number and $number !== 1)
-                                               <button class="btn btn-outline-secondary" wire:click.prevent="getPerviousQuestion({{ $onequestion->id }});">قبلی</button>
+                                               <!-- <button class="btn btn-outline-secondary" wire:click.prevent="getPerviousQuestion({{ $onequestion->id }});">قبلی</button> -->
                                             @endif 
 
                                         </div>
@@ -86,6 +89,35 @@
                         </div>
                     </div>
                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    @elseif($start === 3)
+    <div class="container-fluid content-question">
+        <div class="row ">
+            <div class="col-lg-3">
+                
+            </div>
+            <div class="col-lg-6 mt-10">
+                <div class="card ">
+                    <h4 class="text-question mt-2">متشکریم</h4>
+                    <div class="row mt-2 textcard">
+                        <div class="container" >
+
+                            <div class="row">
+                                <div class="col-lg-5">
+                                </div>   
+                                <div class="col-lg-5 ">
+                                    
+                                </div>
+                            </div>
+                            <br>
+                            <br> 
+                        </div>
+                       
+                    </div>
                 </div>
             </div>
             

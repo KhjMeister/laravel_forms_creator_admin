@@ -14,7 +14,7 @@ class Question extends Model
     protected $fillable = [
         'stext',
         'stype',
-        'force_answer',
+        // 'force_answer',
         'image_url',
         'video_url',
         

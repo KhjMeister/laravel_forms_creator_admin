@@ -9,11 +9,15 @@ use App\Models\Question as Deseptive;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
+
 
 class Questionnair extends Component
 {
     // ایجاد صفحه بندی برای پرسش نامه های کاربر
     use WithPagination;
+    use WithFileUploads;
+    
     protected $paginationTheme = 'bootstrap';
 
     // متغیرها برای تغییر صفحه به قسمت های مختلف  
@@ -23,6 +27,7 @@ class Questionnair extends Component
     public $updateQN = false;
     public $QTAPart = false;
     public $fileSection= false;
+    public $videoSection = true;
 
 
    
@@ -42,7 +47,7 @@ class Questionnair extends Component
 
 
     // متغیرهای لازم برای سوالات
-    public $s_id,$allQuestion,$question,$sText, $stype, $sstate, $force_answer, $image_url, $video_url;
+    public $s_id,$allQuestion,$question,$sText, $stype, $sstate = true, $force_answer, $image_url, $video_url;
 
     // قبل از لود شدن صفحه این متد اجرا می شود 
     public function mount()
@@ -108,6 +113,7 @@ class Questionnair extends Component
     public function deleteQNair($id)
     {
         Quest::find($id)->delete();
+        Deseptive::where('q_id',$id)->delete();
         session()->flash('message', 'deleteQNair');
     }
     //  تغیر فعال و غیر فعال بودن پرسش نامه
@@ -165,6 +171,7 @@ class Questionnair extends Component
     // تغییر صفحه به نمایش اطلاعات یک پرسش نامه تازه ایجاد شده
     public function Change_to_question()
     {
+        $this->getOneQNair($this->q_id);
         $this->questionPart = true;
         $this->indexPart = false; 
 
@@ -182,7 +189,7 @@ class Questionnair extends Component
     // تغییر صفحه به نمایش اطلاعات یک پرسش نامه از قبل ایجاد شده 
     public function show_questions($qid)
     {
-
+        $this->getOneQNair($qid);
         $this->questionPart = true;
         $this->indexPart = false; 
         $this->q_id = $qid;
@@ -209,6 +216,15 @@ class Questionnair extends Component
         }
 
     }
+    // 
+    public function deletequestion($id)
+    {
+        Deseptive::find($id)->delete();
+        $this->allQuestion = Deseptive::where([
+            [ 'q_id' , $this->q_id],
+         ])->orderBy('number', 'asc')->get();
+        
+    }
     //  ذخیره اطلاعات سوال تشریحی با جواب کم
     public function storeTQuestion()
     {
@@ -216,17 +232,18 @@ class Questionnair extends Component
         $bigest++;
         $validatedDate = $this->validate([
             'sText' => ['required', 'string', 'max:255'], 
-            // 'img_url' => 'image|max:2048',
-            // 'video_url' => 'video|max:10048',
+            // 'img_url' => 'string',
+            // 'video_url' => 'string',
         ]);
         
         $this->QTAPart = false;
         $this->stype = 1;
         if(!$this->sstate)$this->sstate = 0;else$this->sstate = 1;
-        // if(!$this->force_answer)$this->force_answer = 0;else$this->force_answer = 1;
+        if(!$this->force_answer)$this->force_answer = 0;else$this->force_answer = 1;
+        if($this->image_url)
+            $filename = $this->image_url->store('uploads','public');
 
-        // $this->image_url = '';
-        // $this->video_url = '';
+        
 
         
         Deseptive::insert([
@@ -238,7 +255,9 @@ class Questionnair extends Component
              'force_answer'=>$this->force_answer,
              'number'=>$bigest,
              'number_status'=>true,
-            //  'created_at' => now()
+             'image_url'=>$filename,
+             'video_url'=>$this->video_url,
+             'created_at' => now()
         ]);
         
         // session()->flash('message', 'createQuestion');
@@ -299,4 +318,13 @@ class Questionnair extends Component
             $this->fileSection= true;
         }
     }
+   public function changeVideoSection($id)
+   {
+    if ($id===1) {
+        $this->videoSection= true;
+    }elseif($id===2){
+        $this->videoSection= false;
+    }
+    
+   } 
 }

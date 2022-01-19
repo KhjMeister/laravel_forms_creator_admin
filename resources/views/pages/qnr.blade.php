@@ -2,5 +2,5 @@
 
 @section('content') 
    
-    <livewire:home.qnr :qnrurl="$qnrurl" />
+    <livewire:home.qnr :qnrurl="$qnrurl" :ipp="$ipp" />
 @endsection

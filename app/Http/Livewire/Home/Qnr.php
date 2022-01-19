@@ -12,27 +12,39 @@ use Livewire\Component;
 class Qnr extends Component
 {
     // متغیرها برای ذخیره اطلاعات سوالات یک پرسشنامه
-    public $qnrurl,$qnairs,$allquestions,$onequestion,$qnaircount,$number=0;
+    public $qnrurl,$qnairs,$allquestions,$onequestion,$qnaircount,$number=0,$user_ips=false;
 
     // متغیرها برای ذخیره جواب ها
 
     public $qid,$qtext;
 
     // متغیر برای شروع
-    public $start = false;
+    public $start = 1;
     
+    public $ipp;
 
+    public function ckecking_user_access()
+    {
+        $this->user_ips = NormalType::where(
+            'n_id' , $this->qnairs->id 
+             
+        )->where('ip' ,$this->ipp )->first();
+    }
+    
     public function mount()
     {
         $this->qnairs  = Quest::where(
              'qnr_url' , $this->qnrurl
          )->first();
-
          $this->allquestions  = Question::where(
-            'q_id' , $this->qnairs->id,
-        )->get();
-        $this->qnaircount = count($this->allquestions);
-        $this->getNumberedQuestion();
+             'q_id' , $this->qnairs->id
+             )
+             // ->where('sstate' , 1)
+             ->get();
+             $this->qnaircount = count($this->allquestions);
+             $this->number = Question::where('q_id',$this->qnairs->id)->min('number') - 1;
+             $this->getNumberedQuestion();
+             $this->ckecking_user_access();
     }
     public function render()
     {
@@ -45,6 +57,7 @@ class Qnr extends Component
         $this->onequestion  = Question::
             where('q_id' , $this->qnairs->id)->
             where('number' , $this->number)->
+            // where('sstate' , 1)->
             first();
         
     }
@@ -54,18 +67,16 @@ class Qnr extends Component
         $this->onequestion  = Question::
             where('q_id' , $this->qnairs->id)->
             where('number' , $this->number)->
+            // where('sstate' , 1)->
             first();
         
     }
 
-    public function changeStart()
+    public function changeStart($id)
     {
-        if (!$this->start ) {
-            $this->start = true;
-        }else{
-            $this->start = false;
-
-        }
+        
+            $this->start = $id;
+       
     }
 
     public function addAnswer($nid,$f)
@@ -80,7 +91,7 @@ class Qnr extends Component
             'hbigtext' => $validatedDate['qtext'],
             'ntype' => 1,
             'n_id' => $nid,
-            'ip' => request()->ip()
+            'ip' =>  $this->ipp
             
        ]);
 
@@ -91,7 +102,7 @@ class Qnr extends Component
         }
 
         if( $f===1 ){
-            $this->start = false;
+            $this->start = 3;
         }
     }
 }

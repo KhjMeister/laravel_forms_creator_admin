@@ -12,6 +12,7 @@ class normalType extends Model
         'htext',
         'hbigtext',
         'n_id',
-        'ntype'
+        'ntype',
+        'ip'
     ];
 }

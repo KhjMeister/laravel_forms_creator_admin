@@ -79,8 +79,9 @@ return [
     'forceAnswer' => 'پاسخ اجباری',
     'video' => 'ویدیو',
     'qnrLink' => 'لینک ',
-    'qnrUrl' => 'شروع ',
+    'qnrUrl' => 'پیش نمایش ',
     'Start' => 'شروع ',
-    
+    'image_url' => ' عکس ',
+    'video_url' => 'آدرس ویدیو (Url)'
 
 ];

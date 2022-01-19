@@ -3,12 +3,12 @@
         <input wire:model="sText"  type="text" class="form-control col-8 @error('sText') is-invalid @enderror" placeholder="{{__('message.question')}}">
             @error('sText') <span class="text-danger">{{ $message }}</span>@enderror
             &nbsp;
-            <div class="form-check col-8">
+            <!-- <div class="form-check col-8">
                 <label class=" form-check-label">
                     <input class="form-check-input" wire:model="sstate" type="checkbox" />
                     <i class="input-helper">{{__('message.sActivate')}}</i>
                 </label>
-            </div>
+            </div> -->
             <div class="form-check col-8">
                 <label class=" form-check-label">
                     <input class="form-check-input" wire:model="force_answer" type="checkbox" />

@@ -81,6 +81,7 @@ class Category extends Component
             'img_url' => $filename,
             'u_id' => 1,
             'active_state' => 0,
+             'created_at' => now()
         ]);
         // Cat::create($validatedDate);
         session()->flash('message', 'create');

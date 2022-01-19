@@ -82,6 +82,8 @@ return [
     'qnrLink' => 'Question Nair Link',
     'qnrUrl' => 'Start ',
     'Start' => 'Start ',
+    'image_url' => 'Image url',
+    'video_url' => 'Video url'
     
     
     
