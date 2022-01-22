@@ -22,7 +22,7 @@
     @if($videoSection==true)
     <div class="form-group col-6">
         <label for="image" class="btn btn-outline-info btn-sm">{{ __('message.image_url') }}</label>
-        <input type="text" class="form-control " hidden id="image" wire:model="image_url" >
+        <input type="file" class="form-control " hidden id="image" wire:model="image_url" >
         @error('image_url') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
     @elseif($videoSection==false)

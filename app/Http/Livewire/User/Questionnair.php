@@ -232,7 +232,7 @@ class Questionnair extends Component
         $bigest++;
         $validatedDate = $this->validate([
             'sText' => ['required', 'string', 'max:255'], 
-            // 'img_url' => 'string',
+            // 'image_url' => 'required',
             // 'video_url' => 'string',
         ]);
         
@@ -242,7 +242,8 @@ class Questionnair extends Component
         if(!$this->force_answer)$this->force_answer = 0;else$this->force_answer = 1;
         if($this->image_url)
             $filename = $this->image_url->store('uploads','public');
-
+        else
+            $filename = '';
         
 
         

@@ -82,7 +82,7 @@ class Qnr extends Component
     public function addAnswer($nid,$f)
     {
         $validatedDate = $this->validate([
-            'qtext' => ['required', 'string', 'max:255'], 
+            'qtext' => ['required', 'string', 'max:255'],
             
         ]);
 
@@ -91,7 +91,8 @@ class Qnr extends Component
             'hbigtext' => $validatedDate['qtext'],
             'ntype' => 1,
             'n_id' => $nid,
-            'ip' =>  $this->ipp
+            'ip' =>  $this->ipp,
+            'q_id' =>  $this->qnairs->id
             
        ]);
 

@@ -80,7 +80,7 @@
                 <thead>
                     <tr>
                     <th>{{__('message.questText')}}</th>
-                    
+                    <th>تصویر یا ویدیو</th>
                     <th >{{__('message.status')}}</th>
                     <th >{{__('message.stype')}}</th>
                     <th >{{__('Action')}}</th>
@@ -92,12 +92,22 @@
                         <td>
                             {{ $question->stext }}
                         </td>
-                        
+                        <td>
+                            @if($question->image_url)
+                                <img style="width:120px;height:auto;" src="{{ asset('storage/'.$question->image_url) }}" alt="image">
+                            @elseif(!$question->image_url and !$question->video_url)
+                                <div class="badge badge-warning">فاقد تصویر یا ویدیو</div>
+                            @elseif($question->video_url)
+                                <video style="width:150px;height:auto;"  controls>
+                                    <source src="{{$question->video_url}}" type="video/mp4">
+                                </video>
+                            @endif
+                        </td>
                         <td>
                             @if($question->sstate === 0)
                                     <span class="badge badge-danger">غیرفعال</span>
                             @elseif($question->sstate === 1)
-                            <span class="badge badge-success">فعال</span>
+                                <span class="badge badge-success">فعال</span>
                             @endif
                         </td>
                         <td>
