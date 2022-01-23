@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\User;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\normalType as Tashrihi;
-
 use Livewire\Component;
 
 class Results extends Component

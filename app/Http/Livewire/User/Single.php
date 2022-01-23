@@ -26,7 +26,10 @@ class Single extends Component
         return Question::where('id',$id)->first()->stext;
     }
 
-    // حذف جواب هی داده شده توسط کاربران
+    public function getInfoOfIp()
+    {
+        
+    }
     public function deleteAnswer()
     {
         Tashrihi::where([
