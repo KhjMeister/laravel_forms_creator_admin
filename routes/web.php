@@ -17,6 +17,7 @@ Route::get('/change', [App\Http\Controllers\LangController::class, 'change'])->n
 Route::get('/cuntactUs', [App\Http\Controllers\HomeController::class, 'contactUs'])->name('cuntactus');
 
 Route::get('/questionnair' , [App\Http\Controllers\Admin\QuestionnairController::class,'index'])->name('questionnair.index');
+Route::get('/showResults/{qnairId}' , [App\Http\Controllers\Admin\QuestionnairController::class,'showResults']);
 
 Route::get('/categories' , [App\Http\Controllers\CategoryController::class,'index'])->name('categories.index');
 Route::get('/users' , [App\Http\Controllers\Admin\UserController::class,'index'])->name('users.index');

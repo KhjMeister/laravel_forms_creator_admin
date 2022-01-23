@@ -20,11 +20,17 @@ class QuestionnairController extends Controller
     }
     public function index()
     {
-        $questionnair = Questionnair::get()->where(
-            'u_id' , $this->getCurrentUserId(),
-        );
+        // $questionnair = Questionnair::get()->where(
+        //     'u_id' , $this->getCurrentUserId(),
+        // );
         return view('admin.questionnair.index');
     }
+    public function showResults($qnairId)
+    {
+        return view('admin.questionnair.Results',compact('qnairId'));
+    }
+
+    
 
     // public function create()
     // {

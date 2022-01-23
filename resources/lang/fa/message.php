@@ -82,6 +82,7 @@ return [
     'qnrUrl' => 'پیش نمایش ',
     'Start' => 'شروع ',
     'image_url' => ' عکس ',
-    'video_url' => 'آدرس ویدیو (Url)'
+    'video_url' => 'آدرس ویدیو (Url)',
+    'showResults' => 'مشاهده نتایج',
 
 ];

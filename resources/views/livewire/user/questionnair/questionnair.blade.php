@@ -102,7 +102,8 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-outline-primary" target="_blank" href="answer/{{ $qnair->qnr_url }}">{{__('message.qnrUrl')}}</a> 
+                                                    <a class="btn btn-outline-primary btn-sm" target="_blank" href="answer/{{ $qnair->qnr_url }}">{{__('message.qnrUrl')}}</a> 
+                                                    <a class="btn btn-outline-info btn-sm"  href="showResults/{{ $qnair->id }}">{{__('message.showResults')}}</a>
                                                 </td>
                                             </tr>
                                             @endforeach

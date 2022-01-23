@@ -8,6 +8,7 @@
                 <div class="col-2">
                     <a wire:click="Change_to_index()" href="#" class="btn btn-outline-secondary btn-sm">{{ __('message.back')}}</a>
                     <a  class="btn btn-outline-primary btn-sm" target="_blank" href="answer/{{ $qunair->qnr_url }}">{{__('message.qnrUrl')}}</a> 
+                    <a  class="btn btn-outline-info btn-sm"  href="showResults/{{ $qunair->id }}">{{__('message.showResults')}}</a> 
                 </div>
            </div>
 

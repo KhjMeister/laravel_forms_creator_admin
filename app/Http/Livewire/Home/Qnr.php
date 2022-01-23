@@ -26,8 +26,7 @@ class Qnr extends Component
     public function ckecking_user_access()
     {
         $this->user_ips = NormalType::where(
-            'n_id' , $this->qnairs->id 
-             
+            'q_id' , $this->qnairs->id 
         )->where('ip' ,$this->ipp )->first();
     }
     
